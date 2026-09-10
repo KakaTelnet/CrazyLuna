@@ -4,9 +4,10 @@
 
 ## SKILL介绍
 
-**强模型负责规划，便宜模型的子 Agent 负责处理大量细节任务。**
+> **强模型负责规划，便宜模型的子 Agent 负责处理大量细节任务。**
 
-CrazyLuna 是一个供强模型使用的 Skill，用来规划任务，并生成一段交给用户的启动 Prompt。用户将这段 Prompt 交给智能体工具，即可让工具按方案调度多个子 Agent，并指定子 Agent 使用便宜模型，完成大量具体、细碎的执行工作。
+CrazyLuna 是一个供强模型使用的 Skill，用来规划任务，并生成一段交给用户的启动 Prompt。
+用户将这段 Prompt 交给智能体工具，即可让工具按方案调度多个子 Agent，并指定子 Agent 使用便宜模型，完成大量具体、细碎的执行工作。
 
 你只需要向强模型说明要做什么。CrazyLuna 会引导它查清项目现状、制定方案、拆分任务，把子 Agent 使用的模型、执行指令和验收要求写清楚，再生成用于启动执行的 Prompt。
 
@@ -23,7 +24,17 @@ CrazyLuna 是一个供强模型使用的 Skill，用来规划任务，并生成�
 
 ## 安装方式
 
-将本项目中的 **`skills/crazy-luna` 整个目录**复制到你使用的 Agent 桌面工具的 Skill 管理位置即可。请保留目录内的全部文件和子目录。
+将以下内容复制并在 Codex/workbuddy 输入框中执行：
+
+```text
+请帮我安装 CrazyLuna Skill。
+项目 Git 地址：https://github.com/KakaTelnet/CrazyLuna.git
+
+请获取该仓库，并根据当前工具的 Skill 安装规则，将仓库中的
+skills/crazy-luna 整个目录安装到对应的 Skill 管理位置，
+保留目录内的全部文件和子目录。
+安装完成后，请检查 Skill 是否可被当前工具识别，并告知我如何调用。
+```
 
 安装后，在工具的技能列表中选择 **CrazyLuna** 使用。
 
