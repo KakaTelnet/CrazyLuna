@@ -1,4 +1,4 @@
-# CrazyLuna
+# Crazy Luna
 
 当前版本：v1.1.0
 
@@ -6,7 +6,7 @@
 
 ## SKILL介绍
 
-> **强模型负责规划，便宜模型的子 Agent 负责处理大量细节任务。**
+> **Crazh Luna Skill使用强模型规划任务，生成Prompt用来调度多个子 Agent使用便宜模型依照规划处理大量细节任务。**
 
 - CrazyLuna 是一个供强模型使用的 Skill，用来规划任务，并生成一段交给用户的启动 Prompt。
 - 用户将这段 Prompt 交给智能体工具，即可让工具按方案调度多个子 Agent，并指定子 Agent 使用便宜模型。
