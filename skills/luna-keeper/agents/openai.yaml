@@ -1,0 +1,4 @@
+interface:
+  display_name: "Luna Keeper"
+  short_description: "衔接规划与执行会话，派发方案、收取结果并依据验收证据持续推进"
+  default_prompt: "使用 $luna-keeper 推进当前目标：需要时使用 Luna Roadmap 制定或修订方案；优先续接已确认的执行任务，没有时新建独立执行任务；回收结果并在授权范围内继续，直到完成或需要我决策。"
