@@ -1,6 +1,6 @@
 # Crazy Luna
 
-- 当前版本：v1.1.0
+- 当前版本：v1.1.1
 - 最新更新日期：2026-09-10
 
 ## SKILL介绍
@@ -119,17 +119,21 @@ $crazy-luna
 
 ## 文件与校验
 
+维护 Skill 或需要理解交付写法时，可按需阅读[完整交付样例](ai_docs/notes/20260920-1025_完整交付样例.md)。日常调用无需读取；样例不作为固定模板或新增流程要求。
+
 | 文件 | 用途 |
 | --- | --- |
 | [SKILL.md](skills/crazy-luna/SKILL.md) | Agent 使用的完整工作流程与交付要求 |
 | [agents/openai.yaml](skills/crazy-luna/agents/openai.yaml) | Codex 显示名称、默认提示和显式调用策略 |
 | [references/models.md](skills/crazy-luna/references/models.md) | 模型配置、宿主选择规则与本地记录格式 |
 | [scripts/validate.rb](skills/crazy-luna/scripts/validate.rb) | Skill 包的静态校验脚本 |
+| [scripts/test_validate.rb](skills/crazy-luna/scripts/test_validate.rb) | 16 个配置与包格式变体的维护回归检查 |
 
 维护或修改 Skill 后，可在本项目根目录运行以下命令，需要 Ruby，脚本仅使用其标准库：
 
 ```sh
 ruby skills/crazy-luna/scripts/validate.rb
+ruby skills/crazy-luna/scripts/test_validate.rb
 ```
 
-静态校验检查包结构、元数据、模型配置和文档引用。宿主加载、模型可用性与真实任务执行需要另行验证。
+第一条命令检查当前包；第二条命令在内存中运行 16 个配置与包格式回归场景。两者均是维护入口。静态回归不能证明宿主加载、模型可用性或真实任务执行；这些需要另行验证。
