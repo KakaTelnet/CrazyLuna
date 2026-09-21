@@ -21,7 +21,8 @@ Crazy Luna 由两个 Skill 配合：
 - [Luna Keeper](skills/luna-keeper/SKILL.md)：负责把开发目标持续推进到完成，组织规划、执行和验收，未完成就继续跟进。
 - [Luna Roadmap](skills/luna-roadmap/SKILL.md)：负责读取项目现状，把需求整理成可执行方案和验收标准。
 
-**Roadmap 解决“怎么做”，Keeper 负责“做到完成”。**
+**Keeper 是司令，负责“做到完成”；**
+**Roadmap 是参谋，负责解决“怎么做”；**
 
 ![Crazy Luna v2.0 组成与原理](assets/luna-v2-workflow-external-user-hd-clean.png)
 
