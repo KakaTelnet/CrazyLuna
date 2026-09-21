@@ -5,8 +5,23 @@
 
 ## 简介
 
-- [Luna Roadmap](skills/luna-roadmap/SKILL.md)：读取项目代码、测试和需求，生成实施方案、子 Agent 分工、验收标准和启动 Prompt。
+
+### 使用方法
+
+当讨论完成方案的时候，只需要这样告诉Codex：
+
+```text
+使用 $luna-keeper 执行上面的任务，在未完成之前遇到的问题尽量自己想办法解决。
+```
+
+### 组成与原理
+
 - [Luna Keeper](skills/luna-keeper/SKILL.md)：在 Codex 中使用 Roadmap 准备方案，创建或续接执行任务，收取结果并推进剩余工作。
+- [Luna Roadmap](skills/luna-roadmap/SKILL.md)：读取项目代码、测试和需求，生成实施方案、子 Agent 分工、验收标准和启动 Prompt。
+
+![Crazy Luna v2.0 组成与原理](assets/luna-v2-workflow-external-user-hd-clean.png)
+
+
 
 ## 安装
 
