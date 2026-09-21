@@ -22,9 +22,9 @@ Crazy Luna 由两个 Skill 配合：
 - [Luna Roadmap](skills/luna-roadmap/SKILL.md)：负责读取项目现状，把需求整理成可执行方案和验收标准。
 
 其中
-**Keeper 是司令，负责“做到完成”；**
-**Roadmap 是参谋，负责解决“怎么做”；**
-**执行者对话窗口是旅长，由司令派生，负责按照指令组织连队(Subagent)完成**
+- **Keeper 是司令，负责一场大战役“做到完成”；**
+- **Roadmap 是参谋，负责制定“路线图”、解决“怎么做”；**
+- **执行者对话窗口是旅长，由司令派生，负责按照指令组织连队(Subagent)完成**
 
 ![Crazy Luna v2.0 组成与原理](assets/luna-v2-workflow-external-user-hd-clean.png)
 
