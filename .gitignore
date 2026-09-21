@@ -1,0 +1,16 @@
+# macOS Finder metadata
+.DS_Store
+
+# Execution records and one-off verification artifacts are kept locally.
+/ai_docs/logs/
+/tmp_luna/
+
+# Keep the maintainer example linked from the legacy README; other working
+# notes remain local alongside the execution records.
+/ai_docs/notes/*
+!/ai_docs/notes/20260920-1025_完整交付样例.md
+
+# Keep only the images referenced by the shipped READMEs.
+/assets/*
+!/assets/luna-v2-workflow-external-user-hd-clean.png
+!/assets/crazy-luna-workflow.png
