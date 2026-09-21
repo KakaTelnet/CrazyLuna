@@ -22,7 +22,6 @@
 ![Crazy Luna v2.0 组成与原理](assets/luna-v2-workflow-external-user-hd-clean.png)
 
 
-
 ## 安装
 
 将下面的内容复制到 Codex 输入框中：
@@ -40,7 +39,7 @@
 安装完成后，检查这两个 Skill 是否可以被当前工具识别，并告知我如何调用。
 ```
 
-## Luna Keeper
+## Luna Keeper Skill 介绍
 
 在 Codex 中打开目标项目，讨论并确认需求后，在同一个对话中输入：
 
@@ -71,7 +70,7 @@
 
 交付结果包含实际工作区、改动、独立验收证据和未完成项。需要合入指定分支或集成回原项目时，在启动时说明目标位置和验证要求。
 
-## Luna Roadmap
+## Luna Roadmap Skill 介绍
 
 只需要方案时，在确认需求的对话中输入：
 

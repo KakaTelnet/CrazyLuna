@@ -1,0 +1,202 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Crazy Luna 协作流程</title>
+  <desc id="desc">用户与 Luna Keeper 确认目标，Keeper 将方案交给执行协调者，执行协调者分别派发执行子 Agent 和独立验收子 Agent，并将结果与证据逐级返回。</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.55" stop-color="#f6faff"/>
+      <stop offset="1" stop-color="#edf5ff"/>
+    </linearGradient>
+    <linearGradient id="titleGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0f3c9b"/>
+      <stop offset="1" stop-color="#2678ff"/>
+    </linearGradient>
+    <linearGradient id="blueCard" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#eaf3ff"/>
+    </linearGradient>
+    <linearGradient id="cyanCard" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#e8fbff"/>
+    </linearGradient>
+    <linearGradient id="violetCard" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f3edff"/>
+    </linearGradient>
+    <linearGradient id="roseCard" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#fff0f7"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#174ea6" flood-opacity="0.13"/>
+    </filter>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#174ea6" flood-opacity="0.12"/>
+    </filter>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#cfe0f7" stroke-width="1" opacity="0.38"/>
+    </pattern>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10Z" fill="#246bfd"/>
+    </marker>
+    <marker id="arrowCyan" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10Z" fill="#06a7c7"/>
+    </marker>
+    <marker id="arrowViolet" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10Z" fill="#7557df"/>
+    </marker>
+    <marker id="arrowRose" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10Z" fill="#e3498b"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1420" cy="30" r="310" fill="#d9eaff" opacity="0.38"/>
+  <circle cx="30" cy="860" r="250" fill="#e4f5ff" opacity="0.55"/>
+  <rect width="1600" height="900" fill="url(#grid)" opacity="0.42"/>
+
+  <g transform="translate(72 54)">
+    <rect x="0" y="1" width="12" height="54" rx="6" fill="url(#titleGrad)"/>
+    <text x="34" y="35" fill="#102a56" font-size="38" font-weight="800" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif">Crazy Luna 协作流程</text>
+    <text x="35" y="68" fill="#637796" font-size="17" font-weight="500" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif">目标有人跟进，任务有人执行，结果有人独立验证</text>
+  </g>
+
+  <g transform="translate(1160 58)" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif">
+    <rect width="356" height="52" rx="26" fill="#ffffff" stroke="#d5e5fb" filter="url(#softShadow)"/>
+    <circle cx="30" cy="26" r="15" fill="#246bfd"/><text x="30" y="31" text-anchor="middle" fill="#fff" font-size="14" font-weight="800">1</text>
+    <text x="54" y="32" fill="#375477" font-size="15" font-weight="700">规划</text>
+    <path d="M103 26H133" stroke="#a9c7ee" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="158" cy="26" r="15" fill="#06a7c7"/><text x="158" y="31" text-anchor="middle" fill="#fff" font-size="14" font-weight="800">2</text>
+    <text x="182" y="32" fill="#375477" font-size="15" font-weight="700">执行</text>
+    <path d="M231 26H261" stroke="#a9c7ee" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="286" cy="26" r="15" fill="#7557df"/><text x="286" y="31" text-anchor="middle" fill="#fff" font-size="14" font-weight="800">3</text>
+    <text x="310" y="32" fill="#375477" font-size="15" font-weight="700">验收</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="64" y="150" width="1472" height="674" rx="34" fill="#ffffff" stroke="#cfe0f7" stroke-width="2"/>
+  </g>
+
+  <g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif">
+    <rect x="92" y="182" width="482" height="590" rx="28" fill="#f4f8ff" stroke="#cfe0f7" stroke-width="2"/>
+    <rect x="594" y="182" width="382" height="590" rx="28" fill="#f2fbff" stroke="#c8eaf3" stroke-width="2"/>
+    <rect x="996" y="182" width="512" height="590" rx="28" fill="#f7f5ff" stroke="#ddd5fb" stroke-width="2"/>
+
+    <g transform="translate(120 208)">
+      <circle cx="22" cy="22" r="22" fill="#246bfd"/><text x="22" y="29" text-anchor="middle" fill="#fff" font-size="18" font-weight="800">1</text>
+      <text x="58" y="18" fill="#17376c" font-size="23" font-weight="800">目标与规划</text>
+      <text x="58" y="43" fill="#6d82a1" font-size="14">用户与 Keeper 保持同一条沟通主线</text>
+    </g>
+    <g transform="translate(622 208)">
+      <circle cx="22" cy="22" r="22" fill="#06a7c7"/><text x="22" y="29" text-anchor="middle" fill="#fff" font-size="18" font-weight="800">2</text>
+      <text x="58" y="18" fill="#17376c" font-size="23" font-weight="800">组织执行</text>
+      <text x="58" y="43" fill="#6d82a1" font-size="14">统一派发、集成、记录与返工</text>
+    </g>
+    <g transform="translate(1024 208)">
+      <circle cx="22" cy="22" r="22" fill="#7557df"/><text x="22" y="29" text-anchor="middle" fill="#fff" font-size="18" font-weight="800">3</text>
+      <text x="58" y="18" fill="#17376c" font-size="23" font-weight="800">实施与独立验收</text>
+      <text x="58" y="43" fill="#6d82a1" font-size="14">制作和验收由不同角色完成</text>
+    </g>
+
+    <!-- User card -->
+    <g filter="url(#softShadow)">
+      <rect x="122" y="332" width="164" height="190" rx="24" fill="url(#blueCard)" stroke="#79a7f7" stroke-width="2"/>
+    </g>
+    <circle cx="204" cy="382" r="32" fill="#dceaff"/>
+    <circle cx="204" cy="372" r="12" fill="none" stroke="#246bfd" stroke-width="4"/>
+    <path d="M180 405C184 384 224 384 228 405" fill="none" stroke="#246bfd" stroke-width="4" stroke-linecap="round"/>
+    <text x="204" y="448" text-anchor="middle" fill="#102a56" font-size="24" font-weight="800">用户</text>
+    <text x="204" y="476" text-anchor="middle" fill="#617999" font-size="14">目标 · 决策 · 审阅</text>
+    <rect x="158" y="492" width="92" height="23" rx="11.5" fill="#e0ecff"/><text x="204" y="508" text-anchor="middle" fill="#246bfd" font-size="12" font-weight="700">需求发起者</text>
+
+    <!-- Keeper card -->
+    <g filter="url(#softShadow)">
+      <rect x="338" y="300" width="210" height="254" rx="26" fill="url(#blueCard)" stroke="#246bfd" stroke-width="2.5"/>
+    </g>
+    <rect x="362" y="322" width="52" height="52" rx="16" fill="#246bfd"/>
+    <path d="M378 348L387 339L398 350L390 357Z" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
+    <circle cx="388" cy="348" r="15" fill="none" stroke="#a9c7ff" stroke-width="2"/>
+    <text x="430" y="345" fill="#102a56" font-size="14" font-weight="700">LUNA</text>
+    <text x="362" y="408" fill="#102a56" font-size="26" font-weight="850">Keeper</text>
+    <text x="362" y="440" fill="#5f7697" font-size="14">规划 · 跟进 · 回收 · 接续</text>
+    <line x1="362" y1="462" x2="524" y2="462" stroke="#d4e3f7"/>
+    <circle cx="372" cy="487" r="4" fill="#246bfd"/><text x="386" y="492" fill="#536b8e" font-size="13">内部使用 Luna Roadmap</text>
+    <circle cx="372" cy="516" r="4" fill="#246bfd"/><text x="386" y="521" fill="#536b8e" font-size="13">持续核对整体目标</text>
+
+    <!-- Coordinator card -->
+    <g filter="url(#softShadow)">
+      <rect x="660" y="300" width="250" height="254" rx="28" fill="url(#cyanCard)" stroke="#06a7c7" stroke-width="2.5"/>
+    </g>
+    <rect x="686" y="324" width="56" height="56" rx="18" fill="#06a7c7"/>
+    <circle cx="714" cy="346" r="7" fill="#fff"/>
+    <circle cx="699" cy="362" r="5" fill="#baf4ff"/>
+    <circle cx="729" cy="362" r="5" fill="#baf4ff"/>
+    <path d="M714 353V365M704 360L714 365L724 360" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="764" y="346" fill="#2a6471" font-size="13" font-weight="800">EXECUTION</text>
+    <text x="686" y="416" fill="#102a56" font-size="27" font-weight="850">执行协调者</text>
+    <text x="686" y="448" fill="#5f7697" font-size="14">派发 · 集成 · 记录 · 返工</text>
+    <line x1="686" y1="470" x2="884" y2="470" stroke="#cceaf1"/>
+    <rect x="686" y="490" width="80" height="28" rx="14" fill="#ddf7fb"/><text x="726" y="509" text-anchor="middle" fill="#087e95" font-size="12" font-weight="700">唯一协调点</text>
+    <rect x="774" y="490" width="92" height="28" rx="14" fill="#e8f5f8"/><text x="820" y="509" text-anchor="middle" fill="#087e95" font-size="12" font-weight="700">维护执行记录</text>
+
+    <!-- Worker card -->
+    <g filter="url(#softShadow)">
+      <rect x="1110" y="290" width="300" height="174" rx="26" fill="url(#violetCard)" stroke="#7557df" stroke-width="2.5"/>
+    </g>
+    <rect x="1138" y="318" width="56" height="56" rx="18" fill="#7557df"/>
+    <path d="M1155 338L1147 346L1155 354M1177 338L1185 346L1177 354M1170 333L1162 359" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="1214" y="343" fill="#55409d" font-size="13" font-weight="800">BUILD</text>
+    <text x="1214" y="373" fill="#102a56" font-size="25" font-weight="850">执行子 Agent</text>
+    <text x="1138" y="414" fill="#5f7697" font-size="14">实施 · 测试 · 诊断</text>
+    <rect x="1138" y="428" width="132" height="24" rx="12" fill="#ebe4ff"/><text x="1204" y="445" text-anchor="middle" fill="#654cc8" font-size="12" font-weight="700">提交产物与自测证据</text>
+
+    <!-- Verifier card -->
+    <g filter="url(#softShadow)">
+      <rect x="1110" y="526" width="300" height="174" rx="26" fill="url(#roseCard)" stroke="#e3498b" stroke-width="2.5"/>
+    </g>
+    <rect x="1138" y="554" width="56" height="56" rx="18" fill="#e3498b"/>
+    <path d="M1166 566L1182 572V585C1182 598 1173 604 1166 607C1159 604 1150 598 1150 585V572Z" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M1158 585L1164 591L1175 579" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="1214" y="579" fill="#a12c61" font-size="13" font-weight="800">VERIFY</text>
+    <text x="1214" y="609" fill="#102a56" font-size="25" font-weight="850">独立验收</text>
+    <text x="1138" y="650" fill="#5f7697" font-size="14">核对产物 · 运行验证 · 判定 AC</text>
+    <rect x="1138" y="664" width="146" height="24" rx="12" fill="#ffe0ee"/><text x="1211" y="681" text-anchor="middle" fill="#c13371" font-size="12" font-weight="700">返回结论、缺陷与证据</text>
+
+    <!-- User ↔ Keeper -->
+    <path d="M286 380H338" fill="none" stroke="#246bfd" stroke-width="4" stroke-linecap="round" marker-end="url(#arrowBlue)"/>
+    <rect x="270" y="340" width="140" height="28" rx="14" fill="#e3edff"/><text x="340" y="359" text-anchor="middle" fill="#1d59d0" font-size="13" font-weight="700">目标 · 约束 · 授权</text>
+    <path d="M390 554V590H204V522" fill="none" stroke="#6f9ee8" stroke-width="3" stroke-dasharray="7 7" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowBlue)"/>
+    <rect x="210" y="556" width="196" height="28" rx="14" fill="#f0f5ff"/><text x="308" y="575" text-anchor="middle" fill="#5877a7" font-size="13" font-weight="700">进度 · 决策请求 · 最终交付</text>
+
+    <!-- Keeper ↔ Coordinator -->
+    <path d="M548 372H660" fill="none" stroke="#246bfd" stroke-width="4" stroke-linecap="round" marker-end="url(#arrowBlue)"/>
+    <rect x="538" y="326" width="190" height="28" rx="14" fill="#e3edff"/><text x="633" y="345" text-anchor="middle" fill="#1d59d0" font-size="13" font-weight="700">方案 · 本轮范围 · 验收标准</text>
+    <path d="M785 554V654H443V554" fill="none" stroke="#6f9ee8" stroke-width="3" stroke-dasharray="7 7" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowBlue)"/>
+    <rect x="516" y="620" width="196" height="28" rx="14" fill="#f0f5ff"/><text x="614" y="639" text-anchor="middle" fill="#5877a7" font-size="13" font-weight="700">产物 · 状态 · 结果与证据</text>
+
+    <!-- Coordinator ↔ Worker -->
+    <path d="M910 346H1002V336H1110" fill="none" stroke="#7557df" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowViolet)"/>
+    <rect x="924" y="296" width="184" height="28" rx="14" fill="#eee9ff"/><text x="1016" y="315" text-anchor="middle" fill="#654cc8" font-size="13" font-weight="700">任务卡 · 输入 · 实施规则</text>
+    <path d="M1110 410H1000V416H910" fill="none" stroke="#9a83e4" stroke-width="3" stroke-dasharray="7 7" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowViolet)"/>
+    <rect x="916" y="430" width="190" height="28" rx="14" fill="#f4f0ff"/><text x="1011" y="449" text-anchor="middle" fill="#7863bd" font-size="13" font-weight="700">改动 · 自测 · 问题与证据</text>
+
+    <!-- Coordinator ↔ Verifier -->
+    <path d="M910 474H988V582H1110" fill="none" stroke="#06a7c7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowCyan)"/>
+    <rect x="914" y="536" width="204" height="28" rx="14" fill="#ddf7fb"/><text x="1016" y="555" text-anchor="middle" fill="#087e95" font-size="13" font-weight="700">需求 · 产物版本 · 验收标准</text>
+    <path d="M1110 654H974V528H910" fill="none" stroke="#e3498b" stroke-width="3" stroke-dasharray="7 7" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowRose)"/>
+    <rect x="904" y="676" width="196" height="28" rx="14" fill="#ffe7f1"/><text x="1002" y="695" text-anchor="middle" fill="#c13371" font-size="13" font-weight="700">验收结论 · 缺陷 · 证据</text>
+
+    <!-- Loop labels -->
+    <g transform="translate(204 708)">
+      <rect width="258" height="40" rx="20" fill="#e5efff" stroke="#b9d2fa"/>
+      <path d="M24 20C24 12 34 10 39 15M39 15V9M39 15H33" fill="none" stroke="#246bfd" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="53" y="26" fill="#1c56bd" font-size="14" font-weight="800">目标推进闭环：核对缺口并继续</text>
+    </g>
+    <g transform="translate(1110 720)">
+      <rect width="300" height="40" rx="20" fill="#f0ebff" stroke="#d6cafa"/>
+      <path d="M24 20C24 12 34 10 39 15M39 15V9M39 15H33" fill="none" stroke="#7557df" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="53" y="26" fill="#654cc8" font-size="14" font-weight="800">实施验收闭环：不通过则返工再验收</text>
+    </g>
+  </g>
+</svg>
