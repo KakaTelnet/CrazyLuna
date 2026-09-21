@@ -1,6 +1,6 @@
 # Crazy Luna
 
-- 当前版本：v2.0.0
+- 当前版本：v2.0.1
 - 最新更新日期：2026-09-21
 
 ## 简介
@@ -24,7 +24,7 @@ Crazy Luna 由两个 Skill 配合：
 其中
 - **Keeper 是司令，负责一场大战役“做到完成”；**
 - **Roadmap 是参谋，负责制定“路线图”、解决“怎么做”；**
-- **执行者对话窗口是旅长，由司令派生，负责按照指令组织连队(Subagent)完成**
+- **执行者对话窗口是旅长，由司令派生，负责按照指令组织连队(Subagent)完成每一场战争**
 
 ![Crazy Luna v2.0 组成与原理](assets/luna-v2-workflow-external-user-hd-clean.png)
 
