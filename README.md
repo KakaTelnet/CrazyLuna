@@ -11,7 +11,7 @@
 当讨论完成方案的时候，只需要这样告诉Codex：
 
 ```text
-使用 $luna-keeper 执行上面的任务，在未完成之前遇到的问题尽量自己想办法解决。
+使用 $luna-keeper 执行上面的任务，直到解决所有问题。
 ```
 
 ### 组成与原理
@@ -22,9 +22,9 @@ Crazy Luna 由两个 Skill 配合：
 - [Luna Roadmap](skills/luna-roadmap/SKILL.md)：负责读取项目现状，把需求整理成可执行方案和验收标准。
 
 其中
-- **Keeper 是司令，负责一场大战役“做到完成”；**
-- **Roadmap 是参谋，负责制定“路线图”、解决“怎么做”；**
-- **执行者对话窗口是旅长，由司令派生，负责按照指令组织连队(Subagent)完成每一场战争**
+- **Keeper 是将军，负责一场大战役“做到完成”；**
+- **Roadmap 是战略参谋，负责制定“路线图”、解决“怎么做”；**
+- **执行者 对话窗口是队长，由将军招募，负责按照指令组织队员(Subagent)完成每一场战争**
 
 ![Crazy Luna v2.0 组成与原理](assets/luna-v2-workflow-external-user-hd-clean.png)
 
