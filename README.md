@@ -1,6 +1,6 @@
 # Crazy Luna
 
-- 当前版本：v2.2.0
+- 当前版本：v2.2.1
 - 最新更新日期：2026-09-23
 
 ## 简介
@@ -56,8 +56,8 @@ Crazy Luna 由两个 Skill 配合：
 使用 $luna-commander 执行任务，完成上述目标。
 规划使用 gpt-6-astra，推理档位 high。
 请新建一个执行任务，协调者使用 gpt-6-sol，推理档位 medium。
-普通实施子 Agent 使用 gpt-6-luna，推理档位 high；
-复杂实施、复杂诊断及独立验收子 Agent 使用 gpt-6-sol，推理档位 high。
+普通实施及普通独立验收子 Agent 使用 gpt-6-luna，推理档位 high；
+复杂实施、复杂诊断及需要复杂判断的独立验收子 Agent 使用 gpt-6-sol，推理档位 high。
 持续跟进执行和验收，直到完成目标。
 本次交付可供我审阅的代码改动和验证结果。
 ```
