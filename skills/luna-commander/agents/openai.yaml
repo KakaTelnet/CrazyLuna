@@ -1,0 +1,4 @@
+interface:
+  display_name: "Luna Commander"
+  short_description: "衔接规划与执行会话，派发方案、收取结果并依据验收证据持续推进"
+  default_prompt: "使用 $luna-commander 执行任务，完成上述目标。"
