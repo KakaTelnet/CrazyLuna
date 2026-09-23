@@ -1,0 +1,7 @@
+interface:
+  display_name: "Luna Strategist"
+  short_description: "为开发任务生成跨工具的执行方案、模型分工、验收标准和启动 Prompt"
+  default_prompt: "使用 $luna-strategist，将当前任务整理为有源码依据的修改方案和验收标准，并给出子 Agent 分工执行与独立验收的启动 Prompt。"
+
+policy:
+  allow_implicit_invocation: false
