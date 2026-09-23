@@ -42,6 +42,26 @@ Crazy Luna 由两个 Skill 配合：
 安装完成后，检查这两个 Skill 是否可以被当前工具识别，并告知我如何调用。
 ```
 
+## 角色与模型默认配置表
+
+本项目参考 [Artificial Analysis Intelligence Index v4.3](https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v4-3) 的能力与成本评测，结合角色职责制定以下默认配置。具体选择规则见 [模型配置](skills/luna-strategist/references/models.md)。
+
+| 角色 | 场景 | 模型 | 推理强度 |
+| --- | --- | --- | --- |
+| Commander 将军 | 整体目标管理、跨任务接续、核对交付 | 沿用当前任务模型 | 沿用当前任务档位 |
+| Strategist 参谋 | 需求分析、方案设计、任务拆分、验收设计 | `gpt-6-astra` | `high` |
+| Captain 队长 | 常规派发、协调、进度与证据管理 | `gpt-6-sol` | `medium` |
+| Captain 队长 | 多模块依赖、集成冲突、复杂诊断协调 | `gpt-6-sol` | `high` |
+| 实施／诊断 Subagent | 方案明确的普通实施、测试、常规诊断 | `gpt-6-luna` | `high` |
+| 实施／诊断 Subagent | 复杂算法、状态与边界逻辑、未知根因、跨模块行为判断 | `gpt-6-sol` | `high` |
+| 测试执行 Subagent | 运行既有测试、记录退出状态、采集原始证据 | `gpt-6-luna` | `high` |
+| 独立验收 Subagent | 按明确标准核对需求、差异和测试结果 | `gpt-6-luna` | `high` |
+| 独立验收 Subagent | 复杂验收设计、覆盖缺口、复杂边界及跨模块判断 | `gpt-6-sol` | `high` |
+
+复杂验收中，确有独立分工价值时，可拆为 **Luna high 执行测试 → Sol high 审查证据并给出结论**；证据仍有效时无需重复运行测试。
+
+用户明确指定优先；已有 Captain 保留原设置。任务或测试数量多本身不触发换型、升档，失败后也不会自动换成更贵的模型。
+
 ## Luna Commander Skill 介绍
 
 在 Codex 中打开目标项目，讨论并确认需求后，在同一个对话中输入：
