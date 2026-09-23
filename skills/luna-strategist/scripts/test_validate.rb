@@ -69,8 +69,8 @@ end
 base = package_documents
 cases = [
   ['C01', 'current package accepted', :accept, ->(documents) { documents }],
-  ['C02', 'worker high with coordinator and verifier unchanged accepted', :accept, lambda { |documents|
-    replace_role_config(documents) { |config| config.merge('reasoning_preference' => 'high') }
+  ['C02', 'worker medium with other roles unchanged accepted', :accept, lambda { |documents|
+    replace_role_config(documents) { |config| config.merge('reasoning_preference' => 'medium') }
     documents
   }],
   ['C03', 'worker missing reasoning preference rejected', :reject, lambda { |documents|
@@ -139,8 +139,8 @@ cases = [
     replace_role_config(documents, 'coordinator') { |config| config.merge('reasoning_preference' => 'high') }
     documents
   }],
-  ['C18', 'verifier high accepted', :accept, lambda { |documents|
-    replace_role_config(documents, 'verifier') { |config| config.merge('reasoning_preference' => 'high') }
+  ['C18', 'verifier medium accepted', :accept, lambda { |documents|
+    replace_role_config(documents, 'verifier') { |config| config.merge('reasoning_preference' => 'medium') }
     documents
   }],
   ['C19', 'non-mapping role rejected', :reject, lambda { |documents|
@@ -181,6 +181,24 @@ cases = [
   }],
   ['C28', 'non-mapping roles rejected', :reject, lambda { |documents|
     replace_model_config(documents) { |config| config.merge('roles' => []) }
+    documents
+  }],
+  ['C29', 'missing strategist rejected', :reject, lambda { |documents|
+    replace_model_config(documents) { |config| config.merge('roles' => config.fetch('roles').reject { |role, _| role == 'strategist' }) }
+    documents
+  }],
+  ['C30', 'independent strategist model and effort accepted', :accept, lambda { |documents|
+    replace_role_config(documents, 'strategist') do |config|
+      config.merge('model' => 'gpt-5.6-sol', 'reasoning_preference' => 'medium')
+    end
+    documents
+  }],
+  ['C31', 'automatic strategist model rejected', :reject, lambda { |documents|
+    replace_role_config(documents, 'strategist') { |config| config.merge('model' => 'auto') }
+    documents
+  }],
+  ['C32', 'strategist missing reasoning preference rejected', :reject, lambda { |documents|
+    replace_role_config(documents, 'strategist') { |config| config.reject { |key, _| key == 'reasoning_preference' } }
     documents
   }]
 ]
@@ -223,7 +241,10 @@ cases.each do |id, name, expectation, builder|
           'C24' => 'models: alternative_models',
           'C25' => 'models: unsupported configuration field',
           'C27' => 'models: worker: model and reasoning_preference required',
-          'C28' => 'models: roles must contain'
+          'C28' => 'models: roles must contain',
+          'C29' => 'models: roles must contain',
+          'C31' => 'models: strategist: model must be',
+          'C32' => 'models: strategist: model and reasoning_preference required'
         }
         fragment = expected_fragments.fetch(id)
         raise "unexpected rejection: #{error.message}" unless error.message.include?(fragment)

@@ -50,8 +50,8 @@ module LunaStrategistValidation
     config = mapping(configs.first.first, 'models')
     check((config.keys - %w[roles alternative_models]).empty?, 'models: unsupported configuration field')
     roles = config['roles']
-    check(roles.is_a?(Hash) && roles.keys.sort == %w[coordinator verifier worker],
-          'models: roles must contain coordinator, worker and verifier only')
+    check(roles.is_a?(Hash) && roles.keys.sort == %w[coordinator strategist verifier worker],
+          'models: roles must contain strategist, coordinator, worker and verifier only')
     roles.each do |role, settings|
       label = "models: #{role}"
       check(settings.is_a?(Hash) && settings.keys.sort == %w[model reasoning_preference],
