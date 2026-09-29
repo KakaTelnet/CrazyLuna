@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crazy Luna · 任务面板</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">✦</span><span>CRAZY LUNA <small>任务面板</small></span></div>
+      <div class="read-only"><span class="pulse"></span> 本地只读</div>
+    </header>
+
+    <main>
+      <section class="intro">
+        <div>
+          <p class="eyebrow">MISSION CONTROL / RECORD VIEW</p>
+          <h1>看清每一轮任务，<br><em>从方案到验收。</em></h1>
+          <p class="subtitle">展示 Luna Commander 为当前目标指定的记录。页面每 10 秒重读文件；信息以记录为准。</p>
+        </div>
+        <div class="project-card">
+          <span class="card-label">当前项目</span>
+          <strong id="projectName">正在读取…</strong>
+          <span id="projectPath" class="path"></span>
+          <div class="project-foot"><span>上次检查</span><time id="checkedAt">—</time></div>
+        </div>
+      </section>
+
+      <section class="source-panel" aria-labelledby="sourcesTitle">
+        <div class="section-heading">
+          <div><p class="eyebrow">01 / DATA SOURCE</p><h2 id="sourcesTitle">记录来源</h2></div>
+          <p>来源由当前 Luna Commander 指定，无需手动选择。</p>
+        </div>
+        <div class="source-list">
+          <div><span>Commander 记录</span><strong id="commanderSource">等待指定</strong></div>
+          <div><span>执行记录</span><strong id="executionSource">等待指定</strong></div>
+          <div><span>方案文档</span><strong id="planSource">等待指定</strong></div>
+        </div>
+        <div class="source-bottom"><span id="sourceHint">正在读取记录…</span><button id="refresh" type="button">刷新记录 <span aria-hidden="true">↗</span></button></div>
+      </section>
+
+      <section class="mission" aria-labelledby="missionTitle">
+        <div class="section-heading">
+          <div><p class="eyebrow">02 / MISSION MAP</p><h2 id="missionTitle">任务结构</h2></div>
+          <p id="goalId">等待 Commander 记录</p>
+        </div>
+        <div class="role-map">
+          <article class="role-card commander-card"><span class="role-number">01 / 主控</span><div class="role-icon">C</div><h3>Commander <small>将军</small></h3><p id="commanderTitle">等待 Commander 记录</p><a id="commanderLink" class="record-link hidden" target="_blank" rel="noopener">查看原文 ↗</a></article>
+          <div class="map-connector" aria-hidden="true"><span></span></div>
+          <article class="role-card strategist-card"><span class="role-number">02 / 规划</span><div class="role-icon">S</div><h3>Strategist <small>参谋</small></h3><p id="planTitle">等待方案文档</p><a id="planLink" class="record-link hidden" target="_blank" rel="noopener">查看原文 ↗</a></article>
+          <div class="map-connector" aria-hidden="true"><span></span></div>
+          <article class="role-card coordinator-card"><span class="role-number">03 / 执行</span><div class="role-icon">E</div><h3>执行协调者</h3><p id="executionTitle">等待执行记录</p><a id="executionLink" class="record-link hidden" target="_blank" rel="noopener">查看原文 ↗</a></article>
+        </div>
+        <p class="map-note">角色关系来自 Crazy Luna 的工作流程；卡片显示记录来源，不代表这些 Agent 此刻正在运行。</p>
+      </section>
+
+      <section class="tasks" aria-labelledby="tasksTitle">
+        <div class="section-heading">
+          <div><p class="eyebrow">03 / EXECUTION</p><h2 id="tasksTitle">任务状态 <span id="taskCount" class="count">0</span></h2></div>
+          <p>相同任务 ID 采用当前执行记录中最后一行的状态。</p>
+        </div>
+        <div id="stats" class="stats"></div>
+        <div id="taskList" class="task-list"><p class="empty">执行记录生成后，这里会显示可识别的任务表。</p></div>
+      </section>
+      <p id="error" class="error hidden" role="alert"></p>
+    </main>
+    <footer>CRAZY LUNA · READ ONLY VIEWER <span>记录未写明的状态保持未知</span></footer>
+  </div>
+</body>
+</html>

@@ -115,3 +115,9 @@ Strategist 按独立角色配置选择规划模型，默认 `gpt-6-astra high`�
 - Commander 需要 Codex 提供创建或续接任务、读取结果、等待执行和发送后续指令的能力。缺少必要能力时，会说明手动交接步骤。
 - 默认在当前对话的处理过程中等待和接续。后台或稍后跟进需要明确提出，并依赖运行环境；Skill 本身不提供常驻后台运行。
 - Strategist 可按其他工具的 Skill 规则安装。工具无法派发子 Agent 时，使用生成的手动会话 Prompt。
+
+## 只读任务面板
+
+在 Codex 桌面端使用 `$luna-commander` 执行任务时，Commander 会在当前对话右侧打开任务面板，并随方案和执行记录路径确定自动绑定来源。用户无需启动服务或选择文件。面板每 10 秒重读记录，展示角色关系、任务状态与验收证据；记录尚未生成时显示等待。它不控制任务，也不把记录中的状态冒充实时 Agent 状态或 token 用量。
+
+此功能需要当前 Codex 宿主支持右侧 browser 面板和可用的 Node.js 运行时；Commander 优先使用宿主自带的运行时，用户无需自行运行命令。缺少条件时 Commander 会说明，执行流程仍可继续。面板代码随完整的 `skills/luna-commander` 目录安装。项目维护者可运行 `node --test skills/luna-commander/dashboard/dashboard.test.mjs` 检查解析与本地服务。

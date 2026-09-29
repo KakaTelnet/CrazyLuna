@@ -2,6 +2,14 @@
 
 本文件处理规划 Agent 调用及跨任务操作，不替代权威方案中的执行与验收协议。能力预检读“接口与执行环境”，规划前读“规划 Agent 的调用”，执行交接前读“发送、等待与恢复”；控制在途任务与后台接续按需读取。
 
+## 右侧只读任务面板
+
+本节仅用于 Codex 桌面端的 Commander 执行模式。目标项目根目录确定后，检查当前宿主是否提供 `open_in_codex` 的右侧 browser 面板和可保持本地进程的 `exec_command`/`write_stdin`。优先通过 `load_workspace_dependencies` 查找宿主自带的 Node.js 路径；该接口不可用时再检查当前 `node` 命令。面板程序位于本 Skill 目录的 `dashboard/server.mjs`，随完整 Skill 目录安装。检查不足时简短说明面板未能打开，原执行流程照常推进；讨论和只生成方案时不启动面板。
+
+首次启动以目标项目根目录传入 `--project`，已核实的方案、Commander 记录、执行记录绝对路径分别传 `--plan`、`--commander`、`--execution`；未知路径暂时省略，不扫描其他目标记录或猜测文件名。执行记录可位于独立 B 的 worktree，必须使用其实际路径。构造 shell 命令时安全引用每个路径。通过 `exec_command` 保持 Node 服务会话，读取 stdout 返回的 `http://127.0.0.1:<端口>`，再调用 `open_in_codex`，以 `target.type=browser`、该 URL 和 `placement=right` 打开到当前 Commander 对话。若宿主返回 `queued`，如实标为待显示，不声称已在右侧可见。只在本目标保留一个面板服务和入口，不因等待或新轮次重复启动；切换目标项目时先结束旧服务，再绑定新目标。
+
+服务在本机环回地址只接受 GET，按固定路径读取 Commander 指定的 Markdown；尚未创建的记录显示等待。方案或执行记录路径随后确定、迁移或修订时，用已保存的服务 sessionId 调用 `write_stdin`，发送一行 JSON 对象，例如 `{"execution":"/实际工作区/ai_docs/logs/执行记录.md"}` 加换行，更新内存中的来源路径；不通过网页写入项目文件。记录路径与服务 sessionId、URL 可在首次实际派发的 Commander 记录中保存，之前只保留于当前对话。恢复时先核实服务是否仍在运行；已停止则按当前权威路径重新启动并重新打开右侧面板。不要把本地页面的任务状态当作宿主实时 Agent 状态或独立验收证据。
+
 ## 接口与执行环境
 
 以本轮实际可调用工具及 schema 为准，工具名可能带命名空间前缀；缺失时搜索可用能力，不假定其他宿主有同名工具。
