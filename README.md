@@ -1,7 +1,7 @@
 # Crazy Luna
 
-- 当前版本：v2.2.1
-- 最新更新日期：2026-09-23
+- 当前版本：v2.2.2
+- 最新更新日期：2026-10-08
 
 ## 简介
 
@@ -44,21 +44,26 @@ Crazy Luna 由两个 Skill 配合：
 
 ## 角色与模型默认配置表
 
-本项目参考 [Artificial Analysis Intelligence Index v4.3](https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v4-3) 的能力与成本评测，结合角色职责制定以下默认配置。具体选择规则见 [模型配置](skills/luna-strategist/references/models.md)。
+本次选型参考 [Artificial Analysis 模型评测](https://artificialanalysis.ai/models)（2026-10-08 查阅，Intelligence Index v4.3.2）及 [v4.3 评测说明](https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v4-3)，结合角色职责和 Captain 轻量测试制定以下配置。具体选择规则见 [模型配置](skills/luna-strategist/references/models.md)。
 
-| 角色 | 场景 | 模型 | 推理强度 |
+| 角色 | 场景 | 推荐模型 | 推理强度 |
 | --- | --- | --- | --- |
 | Commander 将军 | 整体目标管理、跨任务接续、核对交付 | 沿用当前任务模型 | 沿用当前任务档位 |
-| Strategist 参谋 | 需求分析、方案设计、任务拆分、验收设计 | `gpt-6-astra` | `high` |
-| Captain 队长 | 常规派发、协调、进度与证据管理 | `gpt-6-sol` | `medium` |
-| Captain 队长 | 多模块依赖、集成冲突、复杂诊断协调 | `gpt-6-sol` | `high` |
-| 实施／诊断 Subagent | 方案明确的普通实施、测试、常规诊断 | `gpt-6-luna` | `high` |
-| 实施／诊断 Subagent | 复杂算法、状态与边界逻辑、未知根因、跨模块行为判断 | `gpt-6-sol` | `high` |
-| 测试执行 Subagent | 运行既有测试、记录退出状态、采集原始证据 | `gpt-6-luna` | `high` |
-| 独立验收 Subagent | 按明确标准核对需求、差异和测试结果 | `gpt-6-luna` | `high` |
-| 独立验收 Subagent | 复杂验收设计、覆盖缺口、复杂边界及跨模块判断 | `gpt-6-sol` | `high` |
+| Strategist 参谋 | 常规需求分析、方案设计、任务拆分、验收设计 | `gpt-6.1-sol` | `high` |
+| Strategist 参谋 | 重大架构、相互冲突的约束、规划错误会造成大量返工 | `gpt-6-astra` | `high` |
+| Captain 队长 | 方案完整、依赖明确，负责派发、等待、状态维护、证据核对及规则明确的返工 | `gpt-6.1-sol` | `low`（试用默认） |
+| Captain 队长 | 需要自主判断依赖变化、集成影响、诊断价值和返工安排 | `gpt-6.1-sol` | `medium` |
+| Captain 队长 | 复杂跨模块冲突、多个失败原因交织、需要较多技术取舍 | `gpt-6.1-sol` | `high` |
+| 实施 Subagent | 修改位置与规则明确、局部实现、重复性修改 | `gpt-6-luna` | `high` |
+| 实施 Subagent | 需要自主探索代码、选择实现方式、完成模块功能 | `gpt-6.1-sol` | `medium` |
+| 实施／诊断 Subagent | 复杂算法、状态与边界逻辑、未知根因、跨模块问题 | `gpt-6.1-sol` | `high` |
+| 测试执行 Subagent | 执行既定测试、检查退出状态、采集原始证据 | `gpt-6-luna` | `high` |
+| 独立验收 Subagent | 按明确标准核对需求、实际差异和有效测试证据 | `gpt-6-luna` | `high` |
+| 独立验收 Subagent | 设计复杂验收、识别覆盖缺口、判断跨模块正确性或复杂失败原因 | `gpt-6.1-sol` | `high` |
 
-复杂验收中，确有独立分工价值时，可拆为 **Luna high 执行测试 → Sol high 审查证据并给出结论**；证据仍有效时无需重复运行测试。
+Captain Low 为试用默认：2026-10-08 以 `gpt-6.1-sol low` 请求完成一次包含 8 个场景的轻量决策测试，8 项判断按预设标准核对通过。该测试未覆盖真实派发与长期协调，也未与 Medium 对照；宿主未独立回报实际型号与档位，因此不能据此认定 Low 与 Medium 同等可靠。
+
+复杂验收中，确有独立分工价值时，可拆为 **GPT-6 Luna high 执行测试 → GPT-6.1 Sol high 审查证据并给出结论**；证据仍有效时无需重复运行测试。
 
 用户明确指定优先；已有 Captain 保留原设置。任务或测试数量多本身不触发换型、升档，失败后也不会自动换成更贵的模型。
 
@@ -74,10 +79,13 @@ Crazy Luna 由两个 Skill 配合：
 
 ```text
 使用 $luna-commander 执行任务，完成上述目标。
-规划使用 gpt-6-astra，推理档位 high。
-请新建一个执行任务，协调者使用 gpt-6-sol，推理档位 medium。
+规划使用 gpt-6.1-sol，推理档位 high。
+请新建一个执行任务，协调者使用 gpt-6.1-sol，常规协调选择 low；
+需要自主判断依赖、集成或返工时选择 medium；复杂跨模块冲突、关联失败或技术取舍选择 high。
+在方案中写明协调者的确定档位与理由。
 普通实施及普通独立验收子 Agent 使用 gpt-6-luna，推理档位 high；
-复杂实施、复杂诊断及需要复杂判断的独立验收子 Agent 使用 gpt-6-sol，推理档位 high。
+需要自主探索代码并选择常规模块实现细节的子 Agent 使用 gpt-6.1-sol，推理档位 medium；
+复杂实施、复杂诊断及需要复杂判断的独立验收子 Agent 使用 gpt-6.1-sol，推理档位 high。
 持续跟进执行和验收，直到完成目标。
 本次交付可供我审阅的代码改动和验证结果。
 ```
@@ -103,7 +111,7 @@ Crazy Luna 由两个 Skill 配合：
 使用 $luna-strategist 为上述目标制定实施方案并保存，给出启动 Prompt。
 ```
 
-Strategist 按独立角色配置选择规划模型，默认 `gpt-6-astra high`。当前任务已符合选定模型与档位时可直接规划；否则由调用方在宿主支持且派发条件满足时，交给指定模型的规划 Agent，取得并核对方案。缺少必要能力时提供手动规划交接。
+Strategist 按独立角色配置选择规划模型，默认 `gpt-6.1-sol high`。当前任务已符合选定模型与档位时可直接规划；否则由调用方在宿主支持且派发条件满足时，交给指定模型的规划 Agent，取得并核对方案。缺少必要能力时提供手动规划交接。
 
 生成方案和 Prompt 不会启动执行。看过方案后，在执行对话中选择方案指定的模型，再粘贴启动 Prompt；也可以交给 Commander 接续。
 

@@ -59,8 +59,8 @@ module LunaStrategistValidation
       model = settings['model']
       check(model.is_a?(String) && model.match?(/\A\S+\z/) && model != 'auto',
             "#{label}: model must be an explicit nonempty ID")
-      check(%w[medium high].include?(settings['reasoning_preference']),
-            "#{label}: reasoning_preference must be medium or high")
+      check(%w[low medium high].include?(settings['reasoning_preference']),
+            "#{label}: reasoning_preference must be low, medium or high")
     end
     alternatives = config['alternative_models']
     check(alternatives.is_a?(Array) && alternatives.uniq == alternatives &&

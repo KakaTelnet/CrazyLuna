@@ -200,6 +200,14 @@ cases = [
   ['C32', 'strategist missing reasoning preference rejected', :reject, lambda { |documents|
     replace_role_config(documents, 'strategist') { |config| config.reject { |key, _| key == 'reasoning_preference' } }
     documents
+  }],
+  ['C33', 'coordinator low accepted', :accept, lambda { |documents|
+    replace_role_config(documents, 'coordinator') { |config| config.merge('reasoning_preference' => 'low') }
+    documents
+  }],
+  ['C34', 'coordinator medium accepted', :accept, lambda { |documents|
+    replace_role_config(documents, 'coordinator') { |config| config.merge('reasoning_preference' => 'medium') }
+    documents
   }]
 ]
 
