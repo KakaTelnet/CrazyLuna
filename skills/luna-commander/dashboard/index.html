@@ -47,14 +47,25 @@
           <div><p class="eyebrow">02 / MISSION MAP</p><h2 id="missionTitle">任务结构</h2></div>
           <p id="goalId">等待 Commander 记录</p>
         </div>
-        <div class="role-map">
-          <article class="role-card commander-card"><span class="role-number">01 / 主控</span><div class="role-icon">C</div><h3>Commander <small>将军</small></h3><p id="commanderTitle">等待 Commander 记录</p><a id="commanderLink" class="record-link hidden" target="_blank" rel="noopener">查看原文 ↗</a></article>
-          <div class="map-connector" aria-hidden="true"><span></span></div>
-          <article class="role-card strategist-card"><span class="role-number">02 / 规划</span><div class="role-icon">S</div><h3>Strategist <small>参谋</small></h3><p id="planTitle">等待方案文档</p><a id="planLink" class="record-link hidden" target="_blank" rel="noopener">查看原文 ↗</a></article>
-          <div class="map-connector" aria-hidden="true"><span></span></div>
-          <article class="role-card coordinator-card"><span class="role-number">03 / 执行</span><div class="role-icon">E</div><h3>执行协调者</h3><p id="executionTitle">等待执行记录</p><a id="executionLink" class="record-link hidden" target="_blank" rel="noopener">查看原文 ↗</a></article>
+        <div class="role-map" id="roleMap" data-phase="idle">
+          <div class="role-map-top">
+            <article class="role-card strategist-card"><span class="role-number">02 / 规划</span><div class="role-icon">S</div><h3>Strategist <small>参谋</small></h3><p id="planTitle">等待方案文档</p><a id="planLink" class="record-link hidden" target="_blank" rel="noopener">查看原文 ↗</a></article>
+            <div class="flow-link horizontal" aria-label="Commander 委托 Strategist 规划，Strategist 将方案交回 Commander"><span class="flow-track plan-out"></span><span class="flow-track plan-back"></span></div>
+            <article class="role-card commander-card"><span class="role-number">01 / 主控</span><div class="role-icon">C</div><h3>Commander <small>将军</small></h3><p id="commanderTitle">等待 Commander 记录</p><a id="commanderLink" class="record-link hidden" target="_blank" rel="noopener">查看原文 ↗</a></article>
+          </div>
+          <div class="flow-step"><span>① 委托规划 ←　方案回交 →</span><strong id="flowStatus">流程示意</strong></div>
+          <div class="role-map-stage">
+            <div class="flow-caption">② Commander 派发任务<br>↑ 回收结果并验收</div>
+            <div class="flow-link vertical" aria-label="Commander 派发执行任务，执行协调者向 Commander 回报结果"><span class="flow-track exec-out"></span><span class="flow-track exec-back"></span></div>
+            <article class="role-card coordinator-card"><span class="role-number">03 / 执行协调</span><div class="role-icon">E</div><h3>执行协调者</h3><p id="executionTitle">等待执行记录</p><a id="executionLink" class="record-link hidden" target="_blank" rel="noopener">查看原文 ↗</a></article>
+          </div>
+          <div class="role-map-stage">
+            <div class="flow-caption">③ 直接派发子 Agent<br>↑ 回收产物与证据</div>
+            <div class="flow-link vertical" aria-label="执行协调者派发子 Agent，并回收产物与证据"><span class="flow-track sub-out"></span><span class="flow-track sub-back"></span></div>
+            <div class="subagents" aria-label="执行协调者直接派发的子 Agent 类型"><span class="subagents-label">执行子 Agent</span><div><span>实施</span><span>诊断与测试</span><span>独立验收</span></div></div>
+          </div>
         </div>
-        <p class="map-note">角色关系来自 Crazy Luna 的工作流程；卡片显示记录来源，不代表这些 Agent 此刻正在运行。</p>
+        <p class="map-note">动画演示交接方向；高亮依据执行记录中的任务状态，不代表这些 Agent 此刻正在运行。</p>
       </section>
 
       <section class="tasks" aria-labelledby="tasksTitle">

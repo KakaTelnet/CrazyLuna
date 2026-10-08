@@ -36,8 +36,10 @@ button { color: #10251d; background: #a7f0ca; border: 0; border-radius: 8px; pad
 button:hover { background: #c3ffdf; }
 button span { margin-left: 9px; }
 .mission, .tasks { padding-top: 55px; }
-.role-map { display: grid; grid-template-columns: minmax(0, 1fr) 42px minmax(0, 1fr) 42px minmax(0, 1fr); align-items: center; }
-.role-card { border-radius: 15px; padding: 22px; min-height: 204px; position: relative; }
+.role-map { max-width: 900px; margin: 0 auto; border: 1px solid #283b50; border-radius: 18px; padding: 23px; background: radial-gradient(circle at 82% 15%, #1a344433, transparent 42%), #0d1724; }
+.role-map-top, .role-map-stage { display: grid; grid-template-columns: minmax(0, 1fr) 72px minmax(0, 1fr); }
+.role-map-top { align-items: center; }
+.role-card { border-radius: 15px; padding: 22px; min-height: 188px; position: relative; min-width: 0; }
 .role-card::before { content: ''; position: absolute; top: 0; left: 22px; right: 22px; height: 2px; background: var(--accent); }
 .commander-card { --accent: #a7f0ca; }.strategist-card { --accent: #c8adff; }.coordinator-card { --accent: #92bfff; }
 .role-number { color: var(--accent); font-size: 11px; font-weight: 800; letter-spacing: .15em; }
@@ -45,8 +47,39 @@ button span { margin-left: 9px; }
 .role-card h3 { font-size: 21px; margin: 28px 0 9px; }.role-card h3 small { color: #8294a9; font-size: 12px; font-weight: 500; }
 .role-card p { color: #a4b5c8; font-size: 13px; line-height: 1.5; min-height: 39px; margin: 0 0 13px; overflow-wrap: anywhere; }
 .record-link { color: #a7f0ca; font-size: 12px; text-decoration: none; font-weight: 700; }.record-link:hover { text-decoration: underline; }
-.map-connector { height: 1px; background: #47647a; position: relative; }.map-connector span { position: absolute; right: -1px; top: -4px; width: 7px; height: 7px; border-right: 1px solid #83aaca; border-top: 1px solid #83aaca; transform: rotate(45deg); }
-.map-note { margin: 16px 0 0; color: #7489a0; font-size: 12px; }
+.flow-step { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 0 0; color: #92a9be; font-size: 11px; }
+.flow-step strong { color: #a7f0ca; font-weight: 700; text-align: right; }
+.role-map-stage .flow-caption { grid-column: 1 / 3; grid-row: 1; align-self: center; justify-self: end; padding-right: 20px; color: #93a9c0; font-size: 12px; line-height: 1.8; text-align: right; }
+.role-map-stage .flow-link { grid-column: 3; grid-row: 1; justify-self: center; }
+.role-map-stage .role-card, .role-map-stage .subagents { grid-column: 3; grid-row: 2; }
+.flow-link { display: flex; --track-color: #7fc7ea; }
+.flow-link.horizontal { height: 38px; flex-direction: column; justify-content: center; gap: 12px; padding: 0 7px; }
+.flow-link.vertical { height: 86px; justify-content: center; gap: 22px; padding: 12px 0; }
+.flow-track { display: block; position: relative; flex: none; opacity: .45; background: var(--track-color); box-shadow: 0 0 8px var(--track-color); transition: opacity .3s, box-shadow .3s; }
+.horizontal .flow-track { width: 100%; height: 2px; }
+.vertical .flow-track { width: 2px; height: 100%; }
+.flow-track::after { content: ''; position: absolute; width: 7px; height: 7px; border-radius: 50%; background: #d9fff0; box-shadow: 0 0 10px 3px var(--track-color); }
+.horizontal .flow-track::after { top: -3px; }
+.vertical .flow-track::after { left: -3px; }
+.plan-out::after { animation: flow-left 2.4s linear infinite; }.plan-back::after { animation: flow-right 2.4s linear infinite; animation-delay: -1.2s; }
+.exec-out::after, .sub-out::after { animation: flow-down 2.4s linear infinite; }.exec-back::after, .sub-back::after { animation: flow-up 2.4s linear infinite; animation-delay: -1.2s; }
+.role-map[data-phase="planning"] .plan-out, .role-map[data-phase="planning"] .plan-back,
+.role-map[data-phase="running"] .exec-out, .role-map[data-phase="running"] .sub-out,
+.role-map[data-phase="verifying"] .sub-back, .role-map[data-phase="verifying"] .exec-back,
+.role-map[data-phase="rework"] .exec-out, .role-map[data-phase="rework"] .sub-out,
+.role-map[data-phase="rework"] .sub-back, .role-map[data-phase="rework"] .exec-back,
+.role-map[data-phase="complete"] .sub-back, .role-map[data-phase="complete"] .exec-back { opacity: 1; box-shadow: 0 0 13px 2px var(--track-color); }
+.subagents { border: 1px solid #38516a; border-radius: 14px; background: #142336; padding: 16px; }
+.subagents-label { display: block; margin-bottom: 11px; color: #a9cbf3; font-size: 11px; font-weight: 800; letter-spacing: .12em; }
+.subagents > div { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; position: relative; padding-top: 17px; }
+.subagents > div::before { content: ''; position: absolute; top: 5px; left: 16%; right: 16%; border-top: 1px solid #6389a8; }
+.subagents > div span { display: grid; min-height: 54px; place-items: center; padding: 7px; border: 1px solid #47637e; border-radius: 8px; color: #d3e6f9; background: #1b3048; font-size: 11px; text-align: center; position: relative; }
+.subagents > div span::before { content: ''; position: absolute; left: 50%; top: -13px; height: 12px; border-left: 1px solid #6389a8; }
+.map-note { margin: 16px 0 0; color: #8197ad; font-size: 12px; line-height: 1.6; }
+@keyframes flow-left { from { right: 0; } to { right: calc(100% - 7px); } }
+@keyframes flow-right { from { left: 0; } to { left: calc(100% - 7px); } }
+@keyframes flow-down { from { top: 0; } to { top: calc(100% - 7px); } }
+@keyframes flow-up { from { bottom: 0; } to { bottom: calc(100% - 7px); } }
 .count { color: #8de4be; font-size: 17px; vertical-align: 2px; margin-left: 8px; }
 .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 0 0 18px; }
 .stat { display: flex; align-items: baseline; gap: 8px; background: #111b29; border: 1px solid #26364a; border-radius: 10px; padding: 12px 15px; }.stat strong { font-size: 20px; }.stat span { color: #8194ac; font-size: 12px; }
@@ -56,5 +89,6 @@ button span { margin-left: 9px; }
 .task-details { display: flex; flex-wrap: wrap; gap: 7px; }.task-details span { color: #9aabc0; background: #19283a; border-radius: 5px; padding: 5px 7px; font-size: 11px; }.evidence, .blocker { color: #afc0d2; font-size: 13px; line-height: 1.6; margin: 18px 0; overflow-wrap: anywhere; }.blocker { color: #ffc0b3; margin-bottom: 0; }
 .empty { grid-column: 1 / -1; padding: 35px; border: 1px dashed #39516b; border-radius: 12px; color: #91a6bd; text-align: center; }.error { color: #ffc0b3; background: #422a28; border-radius: 8px; padding: 14px 18px; margin-top: 20px; }.hidden { display: none; }
 footer { margin-top: 65px; padding: 25px 0 35px; border-top: 1px solid #253244; color: #688097; font-size: 11px; letter-spacing: .09em; display: flex; justify-content: space-between; gap: 12px; }
-@media (max-width: 900px) { .shell { padding: 0 22px; }.intro { grid-template-columns: 1fr; gap: 24px; }.source-list { grid-template-columns: 1fr; }.role-map { grid-template-columns: 1fr; }.map-connector { width: 1px; height: 28px; justify-self: center; }.map-connector span { right: -3px; top: auto; bottom: 0; transform: rotate(135deg); }.stats { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 580px) { .shell { padding: 0 15px; }.topbar { height: 66px; }.brand { font-size: 13px; }.intro { padding: 35px 0; }.source-panel { padding: 22px 18px; }.section-heading { align-items: start; flex-direction: column; gap: 8px; }.section-heading > p { text-align: left; }.stats { grid-template-columns: repeat(2, 1fr); }.task-list { grid-template-columns: 1fr; }footer { flex-direction: column; } }
+@media (max-width: 900px) { .shell { padding: 0 22px; }.intro { grid-template-columns: 1fr; gap: 24px; }.source-list { grid-template-columns: 1fr; }.stats { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 580px) { .shell { padding: 0 15px; }.topbar { height: 66px; }.brand { font-size: 13px; }.intro { padding: 35px 0; }.source-panel { padding: 22px 18px; }.section-heading { align-items: start; flex-direction: column; gap: 8px; }.section-heading > p { text-align: left; }.role-map { padding: 13px; }.role-map-top, .role-map-stage { grid-template-columns: minmax(0, 1fr) 34px minmax(0, 1fr); }.role-card { padding: 14px; min-height: 170px; }.role-card::before { left: 14px; right: 14px; }.role-icon { top: 12px; right: 12px; width: 25px; height: 25px; }.role-number { font-size: 10px; }.role-card h3 { font-size: 16px; margin-top: 28px; }.role-card h3 small { display: block; }.role-card p { font-size: 11px; }.flow-link.horizontal { padding: 0 3px; }.role-map-stage .flow-caption { padding-right: 8px; font-size: 10px; }.subagents { padding: 11px; }.subagents > div { grid-template-columns: 1fr; padding: 0 0 0 14px; }.subagents > div::before { top: 5px; bottom: 5px; left: 5px; right: auto; border-top: 0; border-left: 1px solid #6389a8; }.subagents > div span { min-height: 29px; }.subagents > div span::before { left: -10px; top: 50%; height: 0; width: 9px; border-left: 0; border-top: 1px solid #6389a8; }.stats { grid-template-columns: repeat(2, 1fr); }.task-list { grid-template-columns: 1fr; }footer { flex-direction: column; } }
+@media (prefers-reduced-motion: reduce) { .flow-track::after { animation: none; }.flow-track { transition: none; } }

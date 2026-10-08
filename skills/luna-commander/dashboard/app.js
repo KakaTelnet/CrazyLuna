@@ -85,6 +85,31 @@ function renderTasks(record) {
   }
 }
 
+function renderFlow(data) {
+  const tasks = data.execution?.tasks ?? [];
+  let phase = 'idle';
+  let label = '流程示意';
+  if (data.plan?.configured && !data.plan?.title) {
+    phase = 'planning';
+    label = '等待方案记录';
+  }
+  if (tasks.some((task) => task.status === 'RUNNING')) {
+    phase = 'running';
+    label = '记录中有进行中任务';
+  } else if (tasks.some((task) => task.status === 'VERIFYING')) {
+    phase = 'verifying';
+    label = '记录中有验收中任务';
+  } else if (tasks.some((task) => task.status === 'REWORK')) {
+    phase = 'rework';
+    label = '记录中有返工任务';
+  } else if (tasks.length && tasks.every((task) => task.status === 'PASS')) {
+    phase = 'complete';
+    label = '记录中任务均已通过';
+  }
+  $('roleMap').dataset.phase = phase;
+  $('flowStatus').textContent = label;
+}
+
 async function refresh() {
   const version = ++refreshVersion;
   try {
@@ -99,6 +124,7 @@ async function refresh() {
     for (const kind of ['commander', 'execution', 'plan']) renderRole(kind, data[kind]);
     const loaded = ['commander', 'execution', 'plan'].filter((kind) => data[kind]?.title).length;
     $('sourceHint').textContent = `${loaded} / 3 份记录可读取 · 自动刷新中`;
+    renderFlow(data);
     renderTasks(data.execution);
     $('error').classList.add('hidden');
   } catch (error) {
